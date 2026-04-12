@@ -1,7 +1,26 @@
 {
-  "featuredProduct": {
-    "name": "Example Product",
-    "expectedPrice": "$29.99"
+  "greyJacket": {
+    "name": "Grey jacket",
+    "price": "£55.00",
+    "slug": "grey-jacket",
+    "variant": "Grey jacket"
   },
-  "searchKeyword": "shirt"
+  "noirJacket": {
+    "name": "Noir jacket",
+    "price": "£60.00",
+    "slug": "noir-jacket",
+    "variant": "Noir jacket"
+  },
+  "bronzeSandals": {
+    "name": "Bronze sandals",
+    "price": "£39.99",
+    "slug": "bronze-sandals"
+  },
+  "brownShades": {
+    "name": "Brown Shades",
+    "price": "£20.00",
+    "slug": "brown-shades",
+    "soldOut": true
+  },
+  "searchKeyword": "jacket"
 }
