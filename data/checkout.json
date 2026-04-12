@@ -1,0 +1,10 @@
+{
+  "shippingAddress": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "address": "123 Main St",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "zip": "1000AA"
+  }
+}

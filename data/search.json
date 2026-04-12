@@ -1,0 +1,10 @@
+{
+  "validSearch": {
+    "keyword": "shirt",
+    "expectedResults": true
+  },
+  "invalidSearch": {
+    "keyword": "xyznonexistent",
+    "expectedResults": false
+  }
+}

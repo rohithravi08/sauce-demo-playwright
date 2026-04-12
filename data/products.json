@@ -1,0 +1,7 @@
+{
+  "featuredProduct": {
+    "name": "Example Product",
+    "expectedPrice": "$29.99"
+  },
+  "searchKeyword": "shirt"
+}
