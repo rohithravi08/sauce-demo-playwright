@@ -3,3 +3,7 @@ test-results/
 playwright-report/
 reports/
 .env
+allure-results/
+allure-report/
+dist/
+*.log
