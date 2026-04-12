@@ -1,10 +1,16 @@
 {
-  "shippingAddress": {
+  "contact": {
+    "email": "test@example.com"
+  },
+  "delivery": {
+    "country": "Netherlands",
     "firstName": "John",
     "lastName": "Doe",
-    "address": "123 Main St",
+    "company": "Test Company",
+    "address": "123 Main Street",
+    "apartment": "Suite 100",
+    "postalCode": "1000AA",
     "city": "Amsterdam",
-    "country": "Netherlands",
-    "zip": "1000AA"
+    "phone": "+31612345678"
   }
 }
