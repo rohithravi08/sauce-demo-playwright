@@ -1,0 +1,357 @@
+{
+  "project": "Sauce Demo Shopify - Playwright Automation Framework",
+  "url": "https://sauce-demo.myshopify.com",
+  "language": "TypeScript",
+  "reporting": ["Playwright HTML Report", "Allure Report"],
+  "phases": [
+    {
+      "phase": 1,
+      "title": "Project Scaffolding & Configuration",
+      "description": "Set up the base project structure, install dependencies, and configure environment variables.",
+      "tasks": [
+        {
+          "id": "T01",
+          "title": "Initialize Playwright TypeScript project",
+          "description": "Run `npm init playwright@latest`, select TypeScript, configure playwright.config.ts with baseURL from environment, set up chromium/firefox/webkit browsers, enable screenshot and video on failure.",
+          "files_to_create": [
+            "playwright.config.ts",
+            "package.json",
+            "tsconfig.json"
+          ],
+          "acceptance_criteria": [
+            "playwright.config.ts reads baseURL from process.env.BASE_URL",
+            "Config supports multiple browsers",
+            "Screenshots and videos captured on test failure"
+          ]
+        },
+        {
+          "id": "T02",
+          "title": "Create folder structure",
+          "description": "Create the full project directory layout following POM and data-driven conventions.",
+          "folder_structure": {
+            "tests/": "Test spec files",
+            "pages/": "Page Object Model classes",
+            "data/": "JSON test data files",
+            "config/": "Environment config files (env.config.ts)",
+            "utils/": "Helper utilities (data loader, custom assertions)",
+            "reports/": "Generated report output (gitignored)",
+            ".github/workflows/": "GitHub Actions workflow files"
+          },
+          "acceptance_criteria": [
+            "All folders exist and are committed",
+            "Each folder has a descriptive README or index file"
+          ]
+        },
+        {
+          "id": "T03",
+          "title": "Create environment config file",
+          "description": "Create config/env.config.ts that exports BASE_URL, credentials, timeouts, and any other env-specific values. Values should fall back to .env or process.env.",
+          "files_to_create": [
+            "config/env.config.ts",
+            ".env.example"
+          ],
+          "acceptance_criteria": [
+            "BASE_URL is never hardcoded in tests or page objects",
+            ".env.example documents all required variables",
+            "Real .env is in .gitignore"
+          ]
+        },
+        {
+          "id": "T04",
+          "title": "Add .gitignore file",
+          "description": "Create a comprehensive .gitignore for a Node.js/TypeScript Playwright project.",
+          "entries_to_include": [
+            "node_modules/",
+            ".env",
+            "playwright-report/",
+            "allure-results/",
+            "allure-report/",
+            "test-results/",
+            "dist/",
+            "*.log"
+          ],
+          "files_to_create": [".gitignore"]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "title": "Page Object Model Implementation",
+      "description": "Build POM classes for every page/component of the Sauce Demo Shopify site.",
+      "tasks": [
+        {
+          "id": "T05",
+          "title": "Create BasePage class",
+          "description": "Create pages/BasePage.ts with shared methods: navigate(), waitForPageLoad(), getTitle(), takeScreenshot(). All other pages extend this.",
+          "files_to_create": ["pages/BasePage.ts"],
+          "acceptance_criteria": [
+            "BasePage accepts Playwright Page object in constructor",
+            "All page classes extend BasePage"
+          ]
+        },
+        {
+          "id": "T06",
+          "title": "Create HomePage page object",
+          "description": "Map the Sauce Demo Shopify home page. Include: hero banner, navigation menu, featured products, search bar interactions.",
+          "files_to_create": ["pages/HomePage.ts"],
+          "acceptance_criteria": [
+            "All interactive elements are mapped as locators",
+            "No hardcoded selectors outside the page class"
+          ]
+        },
+        {
+          "id": "T07",
+          "title": "Create ProductListingPage page object",
+          "description": "Map the product collection/listing page. Include: product cards, filters, sort options, pagination, add-to-cart from listing.",
+          "files_to_create": ["pages/ProductListingPage.ts"]
+        },
+        {
+          "id": "T08",
+          "title": "Create ProductDetailPage page object",
+          "description": "Map the individual product detail page. Include: product title, price, variant selectors, quantity input, add-to-cart button, product images.",
+          "files_to_create": ["pages/ProductDetailPage.ts"]
+        },
+        {
+          "id": "T09",
+          "title": "Create CartPage page object",
+          "description": "Map the shopping cart page/drawer. Include: cart items list, quantity update, item removal, subtotal, proceed to checkout button.",
+          "files_to_create": ["pages/CartPage.ts"]
+        },
+        {
+          "id": "T10",
+          "title": "Create CheckoutPage page object",
+          "description": "Map the Shopify checkout flow. Include: contact info, shipping address, shipping method selection, payment fields, order summary, place order button.",
+          "files_to_create": ["pages/CheckoutPage.ts"]
+        },
+        {
+          "id": "T11",
+          "title": "Create NavigationComponent page object",
+          "description": "Map the shared site navigation/header. Include: logo, main nav links, cart icon + item count, search icon, account link.",
+          "files_to_create": ["pages/components/NavigationComponent.ts"]
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "title": "Test Data Setup",
+      "description": "Create JSON data files for all test scenarios and a utility to load them.",
+      "tasks": [
+        {
+          "id": "T12",
+          "title": "Create test data JSON files",
+          "description": "Create JSON files for each domain of test data.",
+          "files_to_create": [
+            "data/products.json",
+            "data/users.json",
+            "data/checkout.json",
+            "data/search.json"
+          ],
+          "data_structure_examples": {
+            "users.json": {
+              "validUser": { "email": "test@example.com", "password": "Password123" },
+              "invalidUser": { "email": "wrong@example.com", "password": "wrongpass" }
+            },
+            "products.json": {
+              "featuredProduct": { "name": "Example Product", "expectedPrice": "$29.99" },
+              "searchKeyword": "shirt"
+            },
+            "checkout.json": {
+              "shippingAddress": {
+                "firstName": "John", "lastName": "Doe",
+                "address": "123 Main St", "city": "Amsterdam",
+                "country": "Netherlands", "zip": "1000AA"
+              }
+            }
+          }
+        },
+        {
+          "id": "T13",
+          "title": "Create data loader utility",
+          "description": "Create utils/dataLoader.ts with a generic function to read and parse any JSON file from the data/ folder. Should be strongly typed with TypeScript generics.",
+          "files_to_create": ["utils/dataLoader.ts"],
+          "acceptance_criteria": [
+            "Function is generic: loadData<T>(filename: string): T",
+            "Throws descriptive error if file not found"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "title": "Test Implementation",
+      "description": "Write high-priority test specs using the POM classes and JSON data.",
+      "tasks": [
+        {
+          "id": "T14",
+          "title": "Write Home Page tests",
+          "description": "Test home page load, navigation links, hero banner visibility, featured products display.",
+          "files_to_create": ["tests/homePage.spec.ts"],
+          "test_cases": [
+            "Home page loads with correct title",
+            "Navigation menu items are visible",
+            "Featured products section is displayed",
+            "Logo links back to home"
+          ]
+        },
+        {
+          "id": "T15",
+          "title": "Write Product Listing tests",
+          "description": "Test product collection page: products display, sorting, filtering, navigation to PDP.",
+          "files_to_create": ["tests/productListing.spec.ts"],
+          "test_cases": [
+            "Products are listed on collection page",
+            "Sorting by price low-to-high works correctly",
+            "Clicking a product navigates to product detail page",
+            "Product cards display name and price"
+          ]
+        },
+        {
+          "id": "T16",
+          "title": "Write Product Detail Page tests",
+          "description": "Test PDP: product info display, variant selection, quantity change, add to cart.",
+          "files_to_create": ["tests/productDetail.spec.ts"],
+          "test_cases": [
+            "Product title and price are displayed",
+            "Add to cart button is visible and clickable",
+            "Cart count increments after add to cart",
+            "Product images load correctly"
+          ]
+        },
+        {
+          "id": "T17",
+          "title": "Write Cart tests",
+          "description": "Test cart functionality: add items, update quantities, remove items, subtotal calculation.",
+          "files_to_create": ["tests/cart.spec.ts"],
+          "test_cases": [
+            "Item is added to cart from PDP",
+            "Cart item count updates correctly",
+            "Item can be removed from cart",
+            "Subtotal reflects correct amount",
+            "Empty cart shows appropriate message"
+          ]
+        },
+        {
+          "id": "T18",
+          "title": "Write Checkout flow tests",
+          "description": "Test the full checkout funnel using data from checkout.json.",
+          "files_to_create": ["tests/checkout.spec.ts"],
+          "test_cases": [
+            "Checkout page loads from cart",
+            "Contact information fields accept input",
+            "Shipping address can be filled",
+            "Shipping method can be selected",
+            "Order summary displays correct items and total"
+          ]
+        },
+        {
+          "id": "T19",
+          "title": "Write Search tests",
+          "description": "Test site search functionality using keywords from search.json.",
+          "files_to_create": ["tests/search.spec.ts"],
+          "test_cases": [
+            "Search returns relevant results for valid keyword",
+            "Search with no results shows appropriate message",
+            "Search input is accessible from navigation"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "title": "Reporting Setup",
+      "description": "Configure Playwright HTML reporter and Allure reporter.",
+      "tasks": [
+        {
+          "id": "T20",
+          "title": "Configure Playwright HTML reporter",
+          "description": "Enable the built-in Playwright HTML reporter in playwright.config.ts. Set output folder to playwright-report/. Add npm script: `test:report`.",
+          "files_to_modify": ["playwright.config.ts", "package.json"],
+          "acceptance_criteria": [
+            "HTML report generated after test run",
+            "`npm run test:report` opens the report"
+          ]
+        },
+        {
+          "id": "T21",
+          "title": "Configure Allure reporter",
+          "description": "Install allure-playwright and allure-commandline. Configure in playwright.config.ts. Add npm scripts for generate and open. Add @epic, @feature, @story annotations in test files.",
+          "packages": ["allure-playwright", "allure-commandline"],
+          "files_to_modify": ["playwright.config.ts", "package.json"],
+          "acceptance_criteria": [
+            "Allure results generated in allure-results/",
+            "`npm run allure:generate` and `npm run allure:open` work",
+            "Tests have Allure labels/annotations"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 6,
+      "title": "CI/CD - GitHub Actions",
+      "description": "Add GitHub workflow for PR checks and main branch runs with Slack notification.",
+      "tasks": [
+        {
+          "id": "T22",
+          "title": "Create GitHub Actions workflow for PRs",
+          "description": "Create .github/workflows/playwright-pr.yml. Trigger on pull_request to any branch. Steps: checkout, setup Node, install deps, run Playwright tests, upload HTML report as artifact.",
+          "files_to_create": [".github/workflows/playwright-pr.yml"],
+          "triggers": ["pull_request"],
+          "acceptance_criteria": [
+            "Workflow runs on every PR",
+            "Test results uploaded as GitHub artifact",
+            "Workflow fails PR if tests fail"
+          ]
+        },
+        {
+          "id": "T23",
+          "title": "Create GitHub Actions workflow for main branch with Slack notification",
+          "description": "Create .github/workflows/playwright-main.yml. Trigger on push to main. Same test steps as PR workflow plus: post Slack notification on completion using slackapi/slack-github-action. Message should include pass/fail status, run URL, and branch name. SLACK_WEBHOOK_URL stored as GitHub secret.",
+          "files_to_create": [".github/workflows/playwright-main.yml"],
+          "triggers": ["push to main"],
+          "secrets_required": ["SLACK_WEBHOOK_URL"],
+          "acceptance_criteria": [
+            "Slack message sent after every main branch run",
+            "Message contains: status (pass/fail), GitHub run URL, branch",
+            "SLACK_WEBHOOK_URL is a GitHub Actions secret, never hardcoded"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 7,
+      "title": "Documentation",
+      "description": "Write clear README and supporting documentation.",
+      "tasks": [
+        {
+          "id": "T24",
+          "title": "Write README.md",
+          "description": "Create a comprehensive README.md covering: project overview, tech stack, folder structure diagram, prerequisites, installation steps, how to run tests (all browsers, single file, headed mode), how to view reports (HTML + Allure), environment variable setup, GitHub Actions setup, Slack webhook setup.",
+          "files_to_create": ["README.md"],
+          "sections": [
+            "Project Overview",
+            "Tech Stack",
+            "Folder Structure",
+            "Prerequisites",
+            "Installation",
+            "Running Tests",
+            "Viewing Reports",
+            "Environment Variables",
+            "CI/CD Setup",
+            "Slack Notifications"
+          ]
+        }
+      ]
+    }
+  ],
+  "npm_scripts_summary": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
+  },
+  "github_secrets_required": [
+    "SLACK_WEBHOOK_URL"
+  ]
+}
