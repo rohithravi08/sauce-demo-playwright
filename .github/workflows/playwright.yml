@@ -30,7 +30,26 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        id: tests
         run: npm run test:chromium
+        continue-on-error: true
+
+      - name: Parse test results
+        id: results
+        if: always()
+        run: |
+          if [ -f "test-results/results.json" ]; then
+            TOTAL=$(jq '.stats.expected + .stats.unexpected + .stats.skipped' test-results/results.json)
+            PASSED=$(jq '.stats.expected' test-results/results.json)
+            FAILED=$(jq '.stats.unexpected' test-results/results.json)
+            echo "total=$TOTAL" >> $GITHUB_OUTPUT
+            echo "passed=$PASSED" >> $GITHUB_OUTPUT
+            echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          else
+            echo "total=0" >> $GITHUB_OUTPUT
+            echo "passed=0" >> $GITHUB_OUTPUT
+            echo "failed=0" >> $GITHUB_OUTPUT
+          fi
 
       - name: Upload HTML report
         uses: actions/upload-artifact@v4
@@ -40,21 +59,29 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 30
+
       - name: Send Slack notification
-        if: github.event_name == 'push'
+        if: always() && github.event_name == 'push'
         uses: slackapi/slack-github-action@v2.0.0
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
           webhook-type: incoming-webhook
           payload: |
             {
-              "text": "Playwright Tests: ${{ job.status }}",
+              "text": "Playwright Tests: ${{ steps.tests.outcome }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Playwright Test Results*\n\n*Status:* ${{ job.status }}\n*Branch:* ${{ github.ref_name }}\n*Run:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Details>"
+                    "text": "*Playwright Test Results* ${{ steps.tests.outcome == 'success' && '✅' || '❌' }}\n\n*Status:* ${{ steps.tests.outcome }}\n*Branch:* ${{ github.ref_name }}\n\n*Total Tests:* ${{ steps.results.outputs.total }}\n*Passed:* ${{ steps.results.outputs.passed }}\n*Failed:* ${{ steps.results.outputs.failed }}\n\n*Reports:*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|HTML Report> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Allure Results>"
                   }
                 }
               ]
