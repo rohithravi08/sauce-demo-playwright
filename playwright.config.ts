@@ -24,6 +24,7 @@ export default defineConfig({
   reporter: [
     ['html', { outputFolder: 'playwright-report' }],
     ['list'],
+    ['allure-playwright', { outputFolder: 'allure-results' }],
   ],
 
   // Shared settings for all projects
