@@ -97,7 +97,9 @@ export class CheckoutPage extends BasePage {
   }
 
   async verifyRequiredFieldErrors(): Promise<void> {
-    await expect(this.emailInput).toHaveAttribute('aria-invalid', 'true');
+    // Wait for validation to complete by checking the first field
+    // This ensures all validation has been triggered before checking other fields
+    await expect(this.emailInput).toHaveAttribute('aria-invalid', 'true', { timeout: 10000 });
     await expect(this.lastNameInput).toHaveAttribute('aria-invalid', 'true');
     await expect(this.addressInput).toHaveAttribute('aria-invalid', 'true');
     await expect(this.postalCodeInput).toHaveAttribute('aria-invalid', 'true');
