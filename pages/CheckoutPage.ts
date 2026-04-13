@@ -26,6 +26,7 @@ export class CheckoutPage extends BasePage {
   readonly cityInput: Locator;
   readonly phoneInput: Locator;
   readonly orderSummary: Locator;
+  readonly payNowButton: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -41,6 +42,7 @@ export class CheckoutPage extends BasePage {
     this.cityInput = page.getByRole('textbox', { name: 'City' });
     this.phoneInput = page.getByRole('textbox', { name: 'Phone' });
     this.orderSummary = page.locator('[data-order-summary]');
+    this.payNowButton = page.getByRole('button', { name: 'Pay now' });
   }
 
   async verifyCheckoutPageLoaded(): Promise<void> {
@@ -79,5 +81,31 @@ export class CheckoutPage extends BasePage {
 
   async verifyOrderTotal(expectedTotal: string): Promise<void> {
     await expect(this.page.getByText(expectedTotal).first()).toBeVisible();
+  }
+
+  async clickPayNow(): Promise<void> {
+    await this.payNowButton.click();
+  }
+
+  async verifyValidationErrorDisplayed(fieldName: string): Promise<void> {
+    const errorMessage = this.page.locator(`[id*="${fieldName}"] ~ *`).filter({ hasText: /required|enter|invalid/i }).first();
+    await expect(errorMessage).toBeVisible({ timeout: 5000 });
+  }
+
+  async verifyFieldHasError(field: Locator): Promise<void> {
+    await expect(field).toHaveAttribute('aria-invalid', 'true');
+  }
+
+  async verifyRequiredFieldErrors(): Promise<void> {
+    await expect(this.emailInput).toHaveAttribute('aria-invalid', 'true');
+    await expect(this.lastNameInput).toHaveAttribute('aria-invalid', 'true');
+    await expect(this.addressInput).toHaveAttribute('aria-invalid', 'true');
+    await expect(this.postalCodeInput).toHaveAttribute('aria-invalid', 'true');
+    await expect(this.cityInput).toHaveAttribute('aria-invalid', 'true');
+  }
+
+  async verifyStillOnCheckoutPage(): Promise<void> {
+    await expect(this.page).toHaveURL(/checkout/);
+    await expect(this.payNowButton).toBeVisible();
   }
 }

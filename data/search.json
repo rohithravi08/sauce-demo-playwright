@@ -6,5 +6,11 @@
   "invalidSearch": {
     "keyword": "xyznonexistent",
     "expectedResults": false
+  },
+  "jacketSearch": {
+    "keyword": "jacket",
+    "expectedResultsCount": 2,
+    "expectedResultsText": "2 results found for \"jacket\"",
+    "expectedProducts": ["Grey jacket", "Noir jacket"]
   }
 }
