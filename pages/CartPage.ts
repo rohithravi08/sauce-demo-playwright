@@ -6,13 +6,15 @@ export class CartPage extends BasePage {
   readonly checkoutButton: Locator;
   readonly cartTotal: Locator;
   readonly emptyCartMessage: Locator;
+  readonly updateButton: Locator;
 
   constructor(page: Page) {
     super(page);
     this.cartHeading = page.getByRole('heading', { name: 'My Cart' });
     this.checkoutButton = page.getByRole('button', { name: 'Check Out' });
-    this.cartTotal = page.locator('.cart__subtotal');
+    this.cartTotal = page.getByRole('heading', { name: /Total/ });
     this.emptyCartMessage = page.getByText('Your cart is currently empty');
+    this.updateButton = page.getByRole('button', { name: 'Update' });
   }
 
   async goto(): Promise<void> {
@@ -34,5 +36,20 @@ export class CartPage extends BasePage {
 
   async clickCheckout(): Promise<void> {
     await this.checkoutButton.click();
+  }
+
+  async updateProductQuantity(productName: string, quantity: number): Promise<void> {
+    const productRow = this.page.locator('form .row').filter({ has: this.page.getByRole('link', { name: new RegExp(productName) }) });
+    const quantityInput = productRow.getByRole('textbox');
+    await quantityInput.clear();
+    await quantityInput.fill(quantity.toString());
+    await this.updateButton.click();
+    await this.waitForPageLoad();
+  }
+
+  async verifyMultipleProductsInCart(productNames: string[]): Promise<void> {
+    for (const productName of productNames) {
+      await this.verifyProductInCart(productName);
+    }
   }
 }

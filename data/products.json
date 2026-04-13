@@ -22,5 +22,10 @@
     "slug": "brown-shades",
     "soldOut": true
   },
-  "searchKeyword": "jacket"
+  "searchKeyword": "jacket",
+  "multipleProductsTest": {
+    "greyJacketQuantity": 2,
+    "noirJacketQuantity": 1,
+    "expectedTotal": "£170.00"
+  }
 }
