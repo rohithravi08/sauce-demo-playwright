@@ -3,12 +3,14 @@ import { BasePage } from './BasePage';
 
 export class ProductDetailPage extends BasePage {
   readonly addToCartButton: Locator;
+  readonly soldOutButton: Locator;
   readonly productTitle: Locator;
   readonly productPrice: Locator;
 
   constructor(page: Page) {
     super(page);
     this.addToCartButton = page.getByRole('button', { name: 'Add to Cart' });
+    this.soldOutButton = page.getByRole('button', { name: 'Sold Out' });
     this.productTitle = page.locator('h1.product-single__title');
     this.productPrice = page.locator('.product__price');
   }
@@ -28,5 +30,17 @@ export class ProductDetailPage extends BasePage {
 
   async verifyAddToCartButtonVisible(): Promise<void> {
     await expect(this.addToCartButton).toBeVisible();
+  }
+
+  async verifySoldOutButtonVisible(): Promise<void> {
+    await expect(this.soldOutButton).toBeVisible();
+  }
+
+  async verifySoldOutButtonDisabled(): Promise<void> {
+    await expect(this.soldOutButton).toBeDisabled();
+  }
+
+  async verifyAddToCartButtonNotVisible(): Promise<void> {
+    await expect(this.addToCartButton).not.toBeVisible();
   }
 }
