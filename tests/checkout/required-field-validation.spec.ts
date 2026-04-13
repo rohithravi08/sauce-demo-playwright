@@ -30,13 +30,16 @@ test.describe('Checkout', () => {
     // 2. Verify checkout page loads
     await checkoutPage.verifyCheckoutPageLoaded();
 
-    // 3. Leave required fields empty and click 'Pay now'
+    // 3. Select Netherlands to ensure consistent form fields across environments
+    await checkoutPage.selectCountry('Netherlands');
+
+    // 4. Leave required fields empty and click 'Pay now'
     await checkoutPage.clickPayNow();
 
-    // 4. Verify validation errors are displayed
+    // 5. Verify validation errors are displayed
     await checkoutPage.verifyRequiredFieldErrors();
 
-    // 5. Verify user is still on checkout page (did not proceed)
+    // 6. Verify user is still on checkout page (did not proceed)
     await checkoutPage.verifyStillOnCheckoutPage();
   });
 });

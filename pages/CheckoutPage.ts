@@ -49,6 +49,10 @@ export class CheckoutPage extends BasePage {
     await expect(this.emailInput).toBeVisible();
   }
 
+  async selectCountry(country: string): Promise<void> {
+    await this.countrySelect.selectOption(country);
+  }
+
   async fillEmail(email: string): Promise<void> {
     await this.emailInput.fill(email);
   }
