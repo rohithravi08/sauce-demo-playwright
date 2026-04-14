@@ -13,6 +13,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.1. Verify home page loads correctly
 
 **File:** `tests/home-page/home-page-loads.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to https://sauce-demo.myshopify.com
@@ -24,6 +25,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.2. Verify header navigation elements
 
 **File:** `tests/home-page/header-navigation.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to the home page
@@ -38,6 +40,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.3. Verify featured products display
 
 **File:** `tests/home-page/featured-products.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to the home page
@@ -50,6 +53,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.4. Verify footer content
 
 **File:** `tests/home-page/footer-content.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to the home page
@@ -63,6 +67,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.5. Verify social media links
 
 **File:** `tests/home-page/social-media-links.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to the home page
@@ -78,6 +83,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 2.1. Navigate to catalog page
 
 **File:** `tests/product-listing/catalog-navigation.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to the home page
@@ -90,6 +96,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 2.2. Verify product catalog display
 
 **File:** `tests/product-listing/catalog-display.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to /collections/all
@@ -102,6 +109,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 2.3. Verify sold out products indication
 
 **File:** `tests/product-listing/sold-out-products.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to the catalog page
@@ -114,6 +122,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 2.4. Verify breadcrumb navigation
 
 **File:** `tests/product-listing/breadcrumb-navigation.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to the catalog page
@@ -126,6 +135,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 2.5. Verify product price display
 
 **File:** `tests/product-listing/product-prices.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to the catalog page
@@ -147,6 +157,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 3.1. View available product details
 
 **File:** `tests/product-detail/available-product-details.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to /collections/all
@@ -165,6 +176,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 3.2. View sold out product details
 
 **File:** `tests/product-detail/sold-out-product-details.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to /collections/all
@@ -182,6 +194,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 3.3. Verify product breadcrumb navigation
 
 **File:** `tests/product-detail/product-breadcrumb.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to a product detail page (Grey jacket)
@@ -194,6 +207,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 3.4. Verify product variant selector
 
 **File:** `tests/product-detail/variant-selector.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to a product detail page
@@ -210,6 +224,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 4.1. Add single product to cart
 
 **File:** `tests/add-to-cart/add-single-product.spec.ts`
+**Automated:** No | **Priority:** Critical
 
 **Steps:**
   1. Navigate to /products/grey-jacket
@@ -222,6 +237,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 4.2. Add multiple products to cart
 
 **File:** `tests/add-to-cart/add-multiple-products.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to /products/grey-jacket
@@ -236,6 +252,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 4.3. Verify add to cart for sold out product
 
 **File:** `tests/add-to-cart/sold-out-product.spec.ts`
+**Automated:** Yes | **Priority:** High
 
 **Steps:**
   1. Navigate to /products/brown-shades (sold out product)
@@ -248,6 +265,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 4.4. Verify cart counter updates
 
 **File:** `tests/add-to-cart/cart-counter-updates.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Start with empty cart (cart count = 0)
@@ -264,6 +282,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.1. View cart with single item
 
 **File:** `tests/shopping-cart/view-cart-single-item.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Add Grey jacket to cart
@@ -286,6 +305,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.2. Update product quantity in cart
 
 **File:** `tests/shopping-cart/update-quantity.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to cart with Grey jacket (quantity 1)
@@ -302,6 +322,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.3. Remove product from cart
 
 **File:** `tests/shopping-cart/remove-product.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to cart with Grey jacket in it
@@ -315,6 +336,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.4. Verify cart with multiple products
 
 **File:** `tests/shopping-cart/multiple-products-cart.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Add Grey jacket (£55.00) to cart
@@ -330,6 +352,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.5. Add order note
 
 **File:** `tests/shopping-cart/add-order-note.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to cart with items in it
@@ -343,6 +366,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.6. Continue shopping from cart
 
 **File:** `tests/shopping-cart/continue-shopping.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to cart page
@@ -354,6 +378,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.7. Verify empty cart state
 
 **File:** `tests/shopping-cart/empty-cart.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to /cart with no items in cart
@@ -364,6 +389,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.8. Update quantity to zero
 
 **File:** `tests/shopping-cart/quantity-zero.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to cart with product in it
@@ -378,6 +404,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 5.9. Verify quantity input validation
 
 **File:** `tests/shopping-cart/quantity-validation.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to cart with product
@@ -396,6 +423,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.1. Navigate to checkout
 
 **File:** `tests/checkout/navigate-to-checkout.spec.ts`
+**Automated:** No | **Priority:** Critical
 
 **Steps:**
   1. Add product to cart and navigate to cart page
@@ -408,6 +436,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.2. Verify checkout page structure
 
 **File:** `tests/checkout/checkout-page-structure.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to checkout page
@@ -423,6 +452,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.3. Verify contact information section
 
 **File:** `tests/checkout/contact-information.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to checkout page
@@ -436,6 +466,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.4. Verify delivery information section
 
 **File:** `tests/checkout/delivery-information.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to checkout page
@@ -457,6 +488,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.5. Verify payment section
 
 **File:** `tests/checkout/payment-section.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to checkout page
@@ -476,6 +508,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.6. Verify order summary sidebar
 
 **File:** `tests/checkout/order-summary.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Add Grey jacket to cart and navigate to checkout
@@ -494,6 +527,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.7. Verify discount code section
 
 **File:** `tests/checkout/discount-code.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to checkout page
@@ -506,6 +540,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.8. Fill out contact information
 
 **File:** `tests/checkout/fill-contact-info.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to checkout page
@@ -518,6 +553,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.9. Fill out delivery information
 
 **File:** `tests/checkout/fill-delivery-info.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to checkout and fill contact info
@@ -534,6 +570,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.10. Verify checkout with empty cart
 
 **File:** `tests/checkout/empty-cart-checkout.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Attempt to navigate directly to checkout URL with empty cart
@@ -544,6 +581,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.11. Verify return to cart from checkout
 
 **File:** `tests/checkout/return-to-cart.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to checkout page
@@ -555,6 +593,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.12. Verify required field validation
 
 **File:** `tests/checkout/required-field-validation.spec.ts`
+**Automated:** Yes | **Priority:** Critical
 
 **Steps:**
   1. Navigate to checkout page
@@ -567,6 +606,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 6.13. Verify email format validation
 
 **File:** `tests/checkout/email-validation.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to checkout page
@@ -583,6 +623,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 7.1. Search for existing products
 
 **File:** `tests/search/search-existing-products.spec.ts`
+**Automated:** Yes | **Priority:** High
 
 **Steps:**
   1. Navigate to home page
@@ -598,6 +639,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 7.2. Search with no results
 
 **File:** `tests/search/search-no-results.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Navigate to home page
@@ -612,6 +654,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 7.3. Search with empty query
 
 **File:** `tests/search/search-empty-query.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Navigate to home page
@@ -624,6 +667,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 7.4. Search and navigate to product
 
 **File:** `tests/search/search-navigate-to-product.spec.ts`
+**Automated:** No | **Priority:** Medium
 
 **Steps:**
   1. Search for 'jacket'
@@ -635,6 +679,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 7.5. Search case sensitivity
 
 **File:** `tests/search/search-case-sensitivity.spec.ts`
+**Automated:** No | **Priority:** Low
 
 **Steps:**
   1. Search for 'JACKET' (uppercase)
@@ -649,6 +694,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 8.1. Complete shopping journey - single product
 
 **File:** `tests/e2e/complete-shopping-single-product.spec.ts`
+**Automated:** Yes | **Priority:** Critical
 
 **Steps:**
   1. Navigate to home page
@@ -674,6 +720,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 8.2. Complete shopping journey - multiple products
 
 **File:** `tests/e2e/complete-shopping-multiple-products.spec.ts`
+**Automated:** Yes | **Priority:** Critical
 
 **Steps:**
   1. Navigate to home page
@@ -697,6 +744,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 8.3. Shopping flow with search
 
 **File:** `tests/e2e/shopping-flow-with-search.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Navigate to home page
@@ -713,6 +761,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 8.4. Cart management during shopping
 
 **File:** `tests/e2e/cart-management-flow.spec.ts`
+**Automated:** No | **Priority:** High
 
 **Steps:**
   1. Add 3 different products to cart
