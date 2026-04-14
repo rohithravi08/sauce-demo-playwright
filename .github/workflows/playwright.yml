@@ -80,7 +80,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Playwright Test Results* ${{ steps.tests.outcome == 'success' && '✅' || '❌' }}\n\n*Status:* ${{ steps.tests.outcome }}\n*Branch:* ${{ github.ref_name }}\n\n*Total Tests:* ${{ steps.results.outputs.total }}\n*Passed:* ${{ steps.results.outputs.passed }}\n*Failed:* ${{ steps.results.outputs.failed }}\n\n*Reports:*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|HTML Report> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Allure Results>"
+                    "text": "*Playwright Test Results* ${{ steps.tests.outcome == 'success' && '✅' || '❌' }}\n\n*Status:* ${{ steps.tests.outcome }}\n*Branch:* ${{ github.head_ref || github.ref_name }}\n\n*Total Tests:* ${{ steps.results.outputs.total }}\n*Passed:* ${{ steps.results.outputs.passed }}\n*Failed:* ${{ steps.results.outputs.failed }}\n\n*Reports:*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|HTML Report> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Allure Results>"
                   }
                 }
               ]
