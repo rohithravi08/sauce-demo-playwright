@@ -32,7 +32,6 @@ jobs:
       - name: Run Playwright tests
         id: tests
         run: npm run test:chromium
-        continue-on-error: true
 
       - name: Parse test results
         id: results
@@ -68,7 +67,7 @@ jobs:
           retention-days: 30
 
       - name: Send Slack notification
-        if: always() && github.event_name == 'push'
+        if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
         uses: slackapi/slack-github-action@v2.0.0
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}

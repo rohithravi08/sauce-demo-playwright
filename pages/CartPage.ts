@@ -5,7 +5,6 @@ export class CartPage extends BasePage {
   readonly cartHeading: Locator;
   readonly checkoutButton: Locator;
   readonly cartTotal: Locator;
-  readonly emptyCartMessage: Locator;
   readonly updateButton: Locator;
 
   constructor(page: Page) {
@@ -13,7 +12,6 @@ export class CartPage extends BasePage {
     this.cartHeading = page.getByRole('heading', { name: 'My Cart' });
     this.checkoutButton = page.getByRole('button', { name: 'Check Out' });
     this.cartTotal = page.getByRole('heading', { name: /Total/ });
-    this.emptyCartMessage = page.getByText('Your cart is currently empty');
     this.updateButton = page.getByRole('button', { name: 'Update' });
   }
 

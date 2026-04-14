@@ -51,8 +51,4 @@ export class SearchPage extends BasePage {
     const productImage = productLink.locator('img').first();
     await expect(productImage).toBeVisible();
   }
-
-  async getResultsCount(): Promise<number> {
-    return await this.page.locator('.product-index').count();
-  }
 }
