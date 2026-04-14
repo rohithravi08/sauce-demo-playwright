@@ -36,6 +36,7 @@
 ---
 
 ## 🏗 Phase 1 — Project Scaffolding & Configuration
+**Status:** Done
 
 ### T01 · Initialize Playwright TypeScript project
 Run `npm init playwright@latest`, select TypeScript. Configure `playwright.config.ts` with:
@@ -88,6 +89,7 @@ dist/
 ---
 
 ## 🧩 Phase 2 — Page Object Model
+**Status:** Done
 
 ### T05 · BasePage class
 `pages/BasePage.ts` — shared methods for all pages:
@@ -117,6 +119,7 @@ dist/
 ---
 
 ## 📦 Phase 3 — Test Data
+**Status:** Done
 
 ### T12 · Create JSON data files
 
@@ -161,47 +164,14 @@ Throws a descriptive error if file is not found.
 ---
 
 ## 🧪 Phase 4 — Tests
+**Status:** In-Progress
 
-### T14 · Home Page tests (`tests/homePage.spec.ts`)
-- Page loads with correct title
-- Navigation menu items visible
-- Featured products section displayed
-- Logo links back to home
-
-### T15 · Product Listing tests (`tests/productListing.spec.ts`)
-- Products listed on collection page
-- Sort by price low-to-high works
-- Clicking product navigates to PDP
-- Cards display name and price
-
-### T16 · Product Detail Page tests (`tests/productDetail.spec.ts`)
-- Product title and price displayed
-- Add to cart button visible and clickable
-- Cart count increments after add
-- Product images load correctly
-
-### T17 · Cart tests (`tests/cart.spec.ts`)
-- Item added from PDP appears in cart
-- Cart item count updates
-- Item can be removed
-- Subtotal reflects correct amount
-- Empty cart shows appropriate message
-
-### T18 · Checkout flow tests (`tests/checkout.spec.ts`)
-- Checkout page loads from cart
-- Contact info fields accept input
-- Shipping address can be filled (from `checkout.json`)
-- Shipping method can be selected
-- Order summary shows correct items and total
-
-### T19 · Search tests (`tests/search.spec.ts`)
-- Valid keyword returns relevant results
-- No results shows appropriate message
-- Search accessible from navigation
+See [specs/shopping-flow.md](../specs/shopping-flow.md) for test implementation details.
 
 ---
 
 ## 📊 Phase 5 — Reporting
+**Status:** Done
 
 ### T20 · Playwright HTML Reporter
 - Enable built-in HTML reporter in `playwright.config.ts`
@@ -219,6 +189,7 @@ Throws a descriptive error if file is not found.
 ---
 
 ## ⚙️ Phase 6 — GitHub Actions CI/CD
+**Status:** Done
 
 ### T22 · PR Workflow (`.github/workflows/playwright-pr.yml`)
 **Trigger:** `pull_request` on any branch
@@ -250,6 +221,7 @@ Same steps as PR workflow, plus:
 ---
 
 ## 📝 Phase 7 — Documentation
+**Status:** Done
 
 ### T24 · README.md
 

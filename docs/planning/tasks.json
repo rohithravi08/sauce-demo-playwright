@@ -8,6 +8,7 @@
       "phase": 1,
       "title": "Project Scaffolding & Configuration",
       "description": "Set up the base project structure, install dependencies, and configure environment variables.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T01",
@@ -78,6 +79,7 @@
       "phase": 2,
       "title": "Page Object Model Implementation",
       "description": "Build POM classes for every page/component of the Sauce Demo Shopify site.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T05",
@@ -135,6 +137,7 @@
       "phase": 3,
       "title": "Test Data Setup",
       "description": "Create JSON data files for all test scenarios and a utility to load them.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T12",
@@ -180,86 +183,14 @@
       "phase": 4,
       "title": "Test Implementation",
       "description": "Write high-priority test specs using the POM classes and JSON data.",
-      "tasks": [
-        {
-          "id": "T14",
-          "title": "Write Home Page tests",
-          "description": "Test home page load, navigation links, hero banner visibility, featured products display.",
-          "files_to_create": ["tests/homePage.spec.ts"],
-          "test_cases": [
-            "Home page loads with correct title",
-            "Navigation menu items are visible",
-            "Featured products section is displayed",
-            "Logo links back to home"
-          ]
-        },
-        {
-          "id": "T15",
-          "title": "Write Product Listing tests",
-          "description": "Test product collection page: products display, sorting, filtering, navigation to PDP.",
-          "files_to_create": ["tests/productListing.spec.ts"],
-          "test_cases": [
-            "Products are listed on collection page",
-            "Sorting by price low-to-high works correctly",
-            "Clicking a product navigates to product detail page",
-            "Product cards display name and price"
-          ]
-        },
-        {
-          "id": "T16",
-          "title": "Write Product Detail Page tests",
-          "description": "Test PDP: product info display, variant selection, quantity change, add to cart.",
-          "files_to_create": ["tests/productDetail.spec.ts"],
-          "test_cases": [
-            "Product title and price are displayed",
-            "Add to cart button is visible and clickable",
-            "Cart count increments after add to cart",
-            "Product images load correctly"
-          ]
-        },
-        {
-          "id": "T17",
-          "title": "Write Cart tests",
-          "description": "Test cart functionality: add items, update quantities, remove items, subtotal calculation.",
-          "files_to_create": ["tests/cart.spec.ts"],
-          "test_cases": [
-            "Item is added to cart from PDP",
-            "Cart item count updates correctly",
-            "Item can be removed from cart",
-            "Subtotal reflects correct amount",
-            "Empty cart shows appropriate message"
-          ]
-        },
-        {
-          "id": "T18",
-          "title": "Write Checkout flow tests",
-          "description": "Test the full checkout funnel using data from checkout.json.",
-          "files_to_create": ["tests/checkout.spec.ts"],
-          "test_cases": [
-            "Checkout page loads from cart",
-            "Contact information fields accept input",
-            "Shipping address can be filled",
-            "Shipping method can be selected",
-            "Order summary displays correct items and total"
-          ]
-        },
-        {
-          "id": "T19",
-          "title": "Write Search tests",
-          "description": "Test site search functionality using keywords from search.json.",
-          "files_to_create": ["tests/search.spec.ts"],
-          "test_cases": [
-            "Search returns relevant results for valid keyword",
-            "Search with no results shows appropriate message",
-            "Search input is accessible from navigation"
-          ]
-        }
-      ]
+      "status": "In-Progress",
+      "reference": "specs/shopping-flow.md"
     },
     {
       "phase": 5,
       "title": "Reporting Setup",
       "description": "Configure Playwright HTML reporter and Allure reporter.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T20",
@@ -289,6 +220,7 @@
       "phase": 6,
       "title": "CI/CD - GitHub Actions",
       "description": "Add GitHub workflow for PR checks and main branch runs with Slack notification.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T22",
@@ -321,6 +253,7 @@
       "phase": 7,
       "title": "Documentation",
       "description": "Write clear README and supporting documentation.",
+      "status": "Done",
       "tasks": [
         {
           "id": "T24",
