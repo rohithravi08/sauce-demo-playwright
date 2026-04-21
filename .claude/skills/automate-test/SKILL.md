@@ -25,24 +25,57 @@ Example:
 
 When the user provides a test number (e.g., `1.2`), follow these steps:
 
-### 1. Read the Test Specification
+### 1. Validate Test Number
 
-Read `specs/shopping-flow.md` and find the test matching the provided number.
+Read `specs/shopping-flow.md` and verify the test number exists.
 
-Extract:
+**Validation Rules:**
+- Test numbers follow the format `X.Y` (e.g., `1.2`, `4.1`, `8.3`)
+- Section numbers range from 1-8
+- Each section has a limited number of tests
+
+**If test number is INVALID:**
+- Inform the user that the test number does not exist
+- List the valid test numbers available in the section (if section exists)
+- Do NOT proceed with test generation
+
+### 2. Check Automation Status
+
+Once the test number is validated, check:
+
+1. **Read the `**Automated:**` field** in the spec for this test
+2. **Check if the test file exists** in the `tests/` folder at the path specified in `**File:**`
+
+**Decision Matrix:**
+
+| Automated Field | File Exists | Action |
+|-----------------|-------------|--------|
+| No | No | ✅ Proceed with test generation |
+| No | Yes | ⚠️ Inform user file exists but spec says "No" - ask if they want to regenerate |
+| Yes | No | ⚠️ Inform user spec says automated but file missing - ask if they want to generate |
+| Yes | Yes | ❌ Test already automated - inform user and stop |
+
+**If test is already automated (Yes + file exists):**
+- Inform the user: "Test X.Y is already automated. The test file exists at: `<file-path>`"
+- Do NOT proceed with test generation
+- Optionally offer to show the existing test or run it
+
+### 3. Extract Test Specification
+
+Only proceed here if validation passed. Extract:
 - Test title (e.g., "Verify header navigation elements")
 - File path (e.g., `tests/home-page/header-navigation.spec.ts`)
 - Seed file (e.g., `tests/seed.spec.ts`)
 - Test steps with expected outcomes
 
-### 2. Check Existing Page Objects
+### 4. Check Existing Page Objects
 
 Look in the `pages/` directory for existing page objects that can be reused or extended:
 - `pages/HomePage.ts`
 - `pages/BasePage.ts`
 - Other relevant page objects
 
-### 3. Use playwright-cli to Explore the Page
+### 5. Use playwright-cli to Explore the Page
 
 ```bash
 # Open browser and navigate to the page
@@ -55,7 +88,7 @@ playwright-cli snapshot
 playwright-cli snapshot --depth=4
 ```
 
-### 4. Generate Playwright Code
+### 6. Generate Playwright Code
 
 Use `playwright-cli run-code` to verify elements exist:
 
@@ -66,11 +99,11 @@ playwright-cli run-code "async (page) => {
 }"
 ```
 
-### 5. Update Page Objects (if needed)
+### 7. Update Page Objects (if needed)
 
 If new locators or methods are required, update the appropriate page object in `pages/`.
 
-### 6. Write the Test File
+### 8. Write the Test File
 
 Create the test file at the path specified in the spec (e.g., `tests/home-page/header-navigation.spec.ts`).
 
@@ -94,20 +127,20 @@ test.describe('Test Suite Name', () => {
 });
 ```
 
-### 7. Run the Test
+### 9. Run the Test
 
 ```bash
 npx playwright test <test-file-path> --project=chromium
 ```
 
-### 8. Update the Spec
+### 10. Update the Spec
 
 Mark the test as automated in `specs/shopping-flow.md`:
 ```
 **Automated:** No  →  **Automated:** Yes
 ```
 
-### 9. Close Browser
+### 11. Close Browser
 
 ```bash
 playwright-cli close
