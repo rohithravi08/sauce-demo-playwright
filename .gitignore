@@ -13,5 +13,11 @@ dist/
 # Playwright MCP artifacts
 .playwright-mcp/
 
+# Playwright CLI artifacts
+.playwright-cli/
+
+# Generated screenshots
+*.png
+
 # macOS
 .DS_Store
