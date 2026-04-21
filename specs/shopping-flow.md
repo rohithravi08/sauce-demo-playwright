@@ -13,7 +13,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.1. Verify home page loads correctly
 
 **File:** `tests/home-page/home-page-loads.spec.ts`
-**Automated:** No | **Priority:** High
+**Automated:** Yes | **Priority:** High
 
 **Steps:**
   1. Navigate to https://sauce-demo.myshopify.com
@@ -25,7 +25,7 @@ This test plan covers the complete end-to-end shopping flow for the Sauce Demo S
 #### 1.2. Verify header navigation elements
 
 **File:** `tests/home-page/header-navigation.spec.ts`
-**Automated:** No | **Priority:** Medium
+**Automated:** Yes | **Priority:** Medium
 
 **Steps:**
   1. Navigate to the home page
