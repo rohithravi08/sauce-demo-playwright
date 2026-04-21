@@ -6,6 +6,18 @@ allowed-tools: Bash(playwright-cli:*) Bash(npx:*) Bash(npm:*)
 
 # Browser Automation with playwright-cli
 
+## Important: Use playwright-cli via Bash
+
+**ALWAYS use `playwright-cli` commands via the Bash tool. Do NOT use MCP tools like `mcp__playwright-test__*`.**
+
+The `playwright-cli` commands are more token-efficient:
+```bash
+playwright-cli open <url>      # Navigate to URL
+playwright-cli snapshot        # Get page accessibility snapshot
+playwright-cli run-code "..."  # Execute Playwright code
+playwright-cli close           # Close browser
+```
+
 ## Quick start
 
 ```bash
