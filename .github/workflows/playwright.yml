@@ -67,7 +67,7 @@ jobs:
           retention-days: 30
 
       - name: Send Slack notification
-        if: always() && (github.event_name == 'push' || github.event_name == 'pull_request')
+        if: always()
         uses: slackapi/slack-github-action@v2.0.0
         with:
           webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
